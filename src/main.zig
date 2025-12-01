@@ -1,27 +1,19 @@
 const std = @import("std");
 const AoC25 = @import("AoC25");
+const d1p1 = @import("day1/p1.zig");
 
 pub fn main() !void {
-    // Prints to stderr, ignoring potential errors.
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
-    try AoC25.bufferedPrint();
+    try solveDay1();
 }
 
-test "simple test" {
-    const gpa = std.testing.allocator;
-    var list: std.ArrayList(i32) = .empty;
-    defer list.deinit(gpa); // Try commenting this out and see if zig detects the memory leak!
-    try list.append(gpa, 42);
-    try std.testing.expectEqual(@as(i32, 42), list.pop());
+fn solveDay1() !void {
+    const inputs = try d1p1.ParseInputs("day1inp.txt");
+    const pt1res = d1p1.Solvept1(inputs);
+    std.debug.print("Day 1 part 1 reresult: {d}\n", .{pt1res});
+    const pt2res = d1p1.Solvept2(inputs);
+    std.debug.print("Day 1 part 2 reresult: {d}\n", .{pt2res});
 }
 
-test "fuzz example" {
-    const Context = struct {
-        fn testOne(context: @This(), input: []const u8) anyerror!void {
-            _ = context;
-            // Try passing `--fuzz` to `zig build test` and see if it manages to fail this test case!
-            try std.testing.expect(!std.mem.eql(u8, "canyoufindme", input));
-        }
-    };
-    try std.testing.fuzz(Context{}, Context.testOne, .{});
+test {
+    _ = d1p1;
 }
