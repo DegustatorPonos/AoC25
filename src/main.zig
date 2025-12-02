@@ -7,10 +7,10 @@ pub fn main() !void {
 }
 
 fn solveDay1() !void {
-    const inputs = try d1p1.ParseInputs("day1inp.txt");
+    const inputs = try d1p1.ParseInputs("input1.txt");
     const pt1res = d1p1.Solvept1(inputs);
-    std.debug.print("Day 1 part 1 reresult: {d}\n", .{pt1res});
     const pt2res = d1p1.Solvept2(inputs);
+    std.debug.print("Day 1 part 1 reresult: {d}\n", .{pt1res});
     std.debug.print("Day 1 part 2 reresult: {d}\n", .{pt2res});
 }
 
