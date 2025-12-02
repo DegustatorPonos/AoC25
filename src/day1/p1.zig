@@ -101,6 +101,6 @@ test "Solver Day2" {
         -82,
     };
     const result = Solvept2(&inputs);
-    std.debug.print("value: {d}\n", .{result});
+    // std.debug.print("value: {d}\n", .{result});
     try std.testing.expect(result == expexted);
 }
