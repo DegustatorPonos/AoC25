@@ -2,10 +2,12 @@ const std = @import("std");
 const AoC25 = @import("AoC25");
 const d1 = @import("day1/p1.zig");
 const d2 = @import("day2/part1.zig");
+const d3 = @import("day3/part1.zig");
 
 pub fn main() !void {
     // try solveDay1();
-    try solveDay2();
+    // try solveDay2();
+    try solveDay3();
 }
 
 fn solveDay1() !void {
@@ -24,7 +26,14 @@ fn solveDay2() !void {
     std.debug.print("Day 2 part 2 result: {d}\n", .{p2res});
 }
 
+fn solveDay3() !void {
+    const inputs = try d3.ParseInputs("input3.txt");
+    const p1res = d3.Solvept1(inputs);
+    std.debug.print("Day 3 part 1 result: {d}\n", .{p1res});
+}
+
 test {
-    _ = d1;
-    _ = d2;
+    // _ = d1;
+    // _ = d2;
+    _ = d3;
 }

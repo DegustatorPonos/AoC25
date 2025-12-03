@@ -1,7 +1,7 @@
 const std = @import("std");
 const math = std.math;
 
-const Span = struct {
+pub const Span = struct {
     Start: u64,
     End: u64,
 };
@@ -118,14 +118,17 @@ test "comb" {
 test "Part 1 solve" {
     const expected: u64 = 1227775554;
     const inputs = [_]Span {
-        .{.Start = 11, .End = 22 },
-        .{.Start = 95, .End = 115 },
-        .{.Start = 998, .End = 1012 },
-        .{.Start = 1188511880, .End = 1188511890 },
+        .{.Start = 11, .End = 22},
+        .{.Start = 95, .End = 115},
+        .{.Start = 998, .End = 1012},
+        .{.Start = 1188511880, .End = 1188511890},
+        .{.Start = 1698522, .End = 1698528},
         .{.Start = 222220, .End = 222224 },
-        .{.Start = 1698522, .End = 1698528 },
-        .{.Start = 446443, .End = 446449 },
-        .{.Start = 38593856, .End = 38593862 },
+        .{.Start = 446443, .End = 446449},
+        .{.Start = 38593856, .End = 38593862},
+        .{.Start = 565653, .End = 565659},
+        .{.Start = 824824821, .End = 824824827},
+        .{.Start = 2121212118, .End = 2121212124},
     };
     const result = SolvePart1(&inputs);
     // std.debug.print("Result: {d}, expected: {d} (diff= {d})\n", .{result, expected, @abs(expected - result)});
