@@ -34,6 +34,28 @@ pub fn Solvept1(input: [][]u8) u64 {
     return outp;
 }
 
+
+pub fn Solvept2(input: [][]u8) u64 {
+    var outp: u64 = 0;
+    for (input) |line| {
+        const lineValue = processLinept2(line);
+        outp += lineValue;
+    }
+    return outp;
+}
+
+fn processLinept2(inp: []u8) u64 {
+    var outp: u64 = 0;
+    var startIndex: usize = 0;
+    for (0..12) |i| {
+        const maxIndex: usize = getFirstMaxIndex(inp[startIndex..inp.len - (11 - i)]);
+        startIndex += maxIndex + 1;
+        outp += inp[startIndex-1] * std.math.pow(u64, 10, 11 - i);
+    }
+    return outp;
+}
+
+
 pub fn getFirstMaxIndex(vals: []u8) usize {
     var outp: usize = 0;
     var max: u8 = 0;
@@ -45,28 +67,3 @@ pub fn getFirstMaxIndex(vals: []u8) usize {
     }
     return outp;
 }
-
-pub fn generateTestInp(alloc: std.mem.Allocator) ![][]u8 {
-    var line1 = try alloc.alloc(u8, 15);
-    line1.* = [_]u8 { 9,8,7,6,5,4,3,2,1,1,1,1,1,1,1 };
-    var line2 = try alloc.alloc(u8, 15);
-    line2.* = [_]u8 { 8,1,1,1,1,1,1,1,1,1,1,1,1,1,9 };
-    var line3 = try alloc.alloc(u8, 15);
-    line3.* = [_]u8 { 2,3,4,2,3,4,2,3,4,2,3,4,2,7,8 };
-    var line4 = try alloc.alloc(u8, 15);
-    line4.* = [_]u8 { 8,1,8,1,8,1,9,1,1,1,1,2,1,1,1 };
-    var outp = [_][]u8 {
-        &line1,
-        &line2,
-        &line3,
-        &line4,
-    };
-    return &outp;
-}
-
-// 
-// test "Part 1 solve" {
-    // const expected: u64 = 357;
-    // const result = Solvept1(generateTestInp());
-    // try std.testing.expect(expected == result);
-// }

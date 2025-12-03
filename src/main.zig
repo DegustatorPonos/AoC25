@@ -29,7 +29,9 @@ fn solveDay2() !void {
 fn solveDay3() !void {
     const inputs = try d3.ParseInputs("input3.txt");
     const p1res = d3.Solvept1(inputs);
+    const p2res = d3.Solvept2(inputs);
     std.debug.print("Day 3 part 1 result: {d}\n", .{p1res});
+    std.debug.print("Day 3 part 2 result: {d}\n", .{p2res});
 }
 
 test {
